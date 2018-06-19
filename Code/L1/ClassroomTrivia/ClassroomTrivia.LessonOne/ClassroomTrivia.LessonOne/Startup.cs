@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using ClassroomTrivia.LessonOne.Data;
 
 namespace ClassroomTrivia.LessonOne
 {
@@ -23,6 +24,9 @@ namespace ClassroomTrivia.LessonOne
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            services.AddDbContext<ClassroomTriviaContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("ClassroomTriviaContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
