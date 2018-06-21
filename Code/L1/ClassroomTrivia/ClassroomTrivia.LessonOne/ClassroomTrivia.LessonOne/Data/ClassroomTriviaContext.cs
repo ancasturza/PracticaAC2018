@@ -9,11 +9,12 @@ namespace ClassroomTrivia.LessonOne.Data
 {
     public class ClassroomTriviaContext : DbContext
     {
-        public ClassroomTriviaContext (DbContextOptions<ClassroomTriviaContext> options)
+        public ClassroomTriviaContext(DbContextOptions<ClassroomTriviaContext> options)
             : base(options)
         {
         }
 
-        public DbSet<ClassroomTrivia.LessonOne.Models.Question> Question { get; set; }
+        public DbSet<Question> Question { get; set; }
+        public DbSet<Answer> Answer { get; set; }
     }
 }

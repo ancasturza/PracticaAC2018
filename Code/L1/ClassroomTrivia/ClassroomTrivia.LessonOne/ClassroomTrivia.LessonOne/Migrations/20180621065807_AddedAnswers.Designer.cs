@@ -11,9 +11,10 @@ using System;
 namespace ClassroomTrivia.LessonOne.Migrations
 {
     [DbContext(typeof(ClassroomTriviaContext))]
-    partial class ClassroomTriviaContextModelSnapshot : ModelSnapshot
+    [Migration("20180621065807_AddedAnswers")]
+    partial class AddedAnswers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
