@@ -54,7 +54,7 @@ namespace ClassroomTrivia.LessonOne.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("QuestionId,Text")] Question question)
+        public async Task<IActionResult> Create([Bind("QuestionId,Text,Answers")] Question question)
         {
             if (ModelState.IsValid)
             {
@@ -143,6 +143,11 @@ namespace ClassroomTrivia.LessonOne.Controllers
             _context.Question.Remove(question);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult EmptyRow()
+        {
+            return PartialView();
         }
 
         private bool QuestionExists(int id)
