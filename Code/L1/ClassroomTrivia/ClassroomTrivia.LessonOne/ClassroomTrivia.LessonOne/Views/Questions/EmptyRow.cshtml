@@ -1,6 +1,6 @@
-﻿@model ClassroomTrivia.LessonOne.Models.Question
+﻿@model ClassroomTrivia.LessonOne.Models.Answer
 
 <tr>
-    <td><input asp-for="Answers[0].Text" /></td>
-    <td><input type="checkbox" asp-for="Answers[0].IsCorrenct" /></td>
+    <td><input asp-for="Text" name="Answers[@ViewBag.Index].Text" id="Answers[@ViewBag.Index].Text" /></td>
+    <td><input type="checkbox" asp-for="IsCorrenct" name="Answers[@ViewBag.Index].IsCorrenct" id="Answers[@ViewBag.Index].IsCorrenct" /></td>
 </tr>

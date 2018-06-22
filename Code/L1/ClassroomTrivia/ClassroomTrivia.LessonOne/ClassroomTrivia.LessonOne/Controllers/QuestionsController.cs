@@ -145,9 +145,10 @@ namespace ClassroomTrivia.LessonOne.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult EmptyRow()
+        public IActionResult EmptyRow(int? id)
         {
-            return PartialView();
+            ViewBag.Index = id;
+            return PartialView(new Answer());
         }
 
         private bool QuestionExists(int id)
