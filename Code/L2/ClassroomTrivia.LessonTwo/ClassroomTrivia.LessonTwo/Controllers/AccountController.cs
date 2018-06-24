@@ -217,6 +217,33 @@ namespace ClassroomTrivia.LessonTwo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
         {
+            // Initialize a variable to hold the role value.
+            var role = string.Empty;
+            // Check if the Authorization Code starts with an "A" ignoring the case.
+            if (model.AuthorizationCode.StartsWith("A", StringComparison.InvariantCultureIgnoreCase))
+            {
+                // Set the role as Administrator.
+                role = "Admin";
+            }
+            // Else check if the Authorization Code starts with an "P" ignoring the case.
+            else if (model.AuthorizationCode.StartsWith("P", StringComparison.InvariantCultureIgnoreCase))
+            {
+                // Set the role as Professor.
+                role = "Professor";
+            }
+            // Else check if the Authorization Code starts with an "S" ignoring the case.
+            else if (model.AuthorizationCode.StartsWith("S", StringComparison.InvariantCultureIgnoreCase))
+            {
+                // Set the role as Student.
+                role = "Student";
+            }
+            // Else add an error to the model state.
+            else
+            {
+                // Add "Invalid Authorization Code." error message to the model state.
+                ModelState.AddModelError(string.Empty, "Invalid Authorization Code.");
+            }
+
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
@@ -224,6 +251,9 @@ namespace ClassroomTrivia.LessonTwo.Controllers
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    // Adding the new created user to the designated role.
+                    await _userManager.AddToRoleAsync(user, role);
+
                     _logger.LogInformation("User created a new account with password.");
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);

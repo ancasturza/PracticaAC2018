@@ -85,13 +85,13 @@ namespace ClassroomTrivia.LessonTwo
             // Create a variable to hold the result of the role manager when it creates a new role.
             IdentityResult identityResult;
 
-            // Check if the admin role exists.
+            // Check if the administrator role exists.
             // Note that because the RoleExistsAsync method is asynchronous we need to wait for the result.
             var roleExists = await roleManager.RoleExistsAsync("Admin");
             if (!roleExists)
             {
                 // If our role does not exist we need to create it.
-                // First we need to create the admin identity role.
+                // First we need to create the administrator identity role.
                 var adminRole = new IdentityRole("Admin");
                 // Now we need to use the manager to create the role in the database.
                 identityResult = await roleManager.CreateAsync(adminRole);
