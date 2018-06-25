@@ -24,8 +24,8 @@ namespace ClassroomTrivia.LessonThree.Data
             // Add your customizations after calling base.OnModelCreating(builder);
         }
 
-        public DbSet<ClassroomTrivia.LessonThree.Data.Entities.Question> Question { get; set; }
+        public DbSet<Question> Question { get; set; }
 
-        public DbSet<ClassroomTrivia.LessonThree.Data.Entities.Answer> Answer { get; set; }
+        public DbSet<Answer> Answer { get; set; }
     }
 }

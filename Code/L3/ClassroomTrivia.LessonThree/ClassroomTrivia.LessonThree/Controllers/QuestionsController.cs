@@ -54,7 +54,7 @@ namespace ClassroomTrivia.LessonThree.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("QuestionId,Text")] Question question)
+        public async Task<IActionResult> Create([Bind("QuestionId,Text,Answers")] Question question)
         {
             if (ModelState.IsValid)
             {
@@ -145,11 +145,11 @@ namespace ClassroomTrivia.LessonThree.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        [Route("{controller}/{action}/{index}")]
+        [Route("[controller]/[action]/{index}")]
         public IActionResult EmptyRow(int index)
         {
             ViewBag.Index = index;
-            return PartialView(new Answer());
+            return PartialView("_EmptyRow", new Answer());
         }
 
         private bool QuestionExists(int id)
