@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using ClassroomTrivia.LessonThree.Models;
+using ClassroomTrivia.LessonThree.Data.Entities;
 
 namespace ClassroomTrivia.LessonThree.Data
 {
@@ -22,5 +23,9 @@ namespace ClassroomTrivia.LessonThree.Data
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
         }
+
+        public DbSet<ClassroomTrivia.LessonThree.Data.Entities.Question> Question { get; set; }
+
+        public DbSet<ClassroomTrivia.LessonThree.Data.Entities.Answer> Answer { get; set; }
     }
 }
