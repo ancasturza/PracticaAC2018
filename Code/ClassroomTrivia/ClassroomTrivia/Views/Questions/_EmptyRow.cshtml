@@ -1,0 +1,9 @@
+﻿@model ClassroomTrivia.Data.Entities.Answer
+
+<div>
+    <label asp-for="Text" class="control-label"></label>
+    <input asp-for="Text" class="form-control" name="Answers[@ViewBag.Index].Text" id="UniqueAnswerId_@ViewBag.Index" />
+    <input asp-for="IsCorrect" type="checkbox" class="form-control" name="Answers[@ViewBag.Index].IsCorrect" id="UniqueCheckBoxId_@ViewBag.Index" />
+    <span asp-validation-for="Text" class="text-danger"></span>
+</div>
+

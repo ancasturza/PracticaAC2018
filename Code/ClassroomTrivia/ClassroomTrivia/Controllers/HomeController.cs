@@ -28,8 +28,7 @@ namespace ClassroomTrivia.Controllers
         public IActionResult Contact()
         {
             ViewData["Message"] = "Your contact page.";
-            User.IsInRole("Admin");
-            var a= User.Identity.IsAuthenticated;
+           
             return View();
         }
 

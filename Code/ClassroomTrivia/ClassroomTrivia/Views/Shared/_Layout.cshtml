@@ -36,7 +36,14 @@
                     {
                         <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
                     }
+
+                    @if (User.Identity.IsAuthenticated && (User.IsInRole("Admin")|| User.IsInRole("Professor")))
+                    {
+                        <li><a asp-area="" asp-controller="Questions" asp-action="Index">Questions</a></li>
+                    }
                 </ul>
+
+
                 @await Html.PartialAsync("_LoginPartial")
             </div>
         </div>

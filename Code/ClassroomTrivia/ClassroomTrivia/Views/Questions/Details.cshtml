@@ -1,0 +1,52 @@
+﻿@model ClassroomTrivia.Data.Entities.Question
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Question</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Text)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Text)
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <h4>Answers</h4>
+    <div class="row">
+        <div class="col-md-9">
+            Answer Text
+        </div>
+        <div class="col-md-3">
+            Is Correct
+        </div>
+    </div>
+
+    @foreach (var a in Model.Answers)
+    {
+    <div class="row">
+        <div class="col-md-9">
+            @a.Text
+        </div>
+        <div class="col-md-3">
+            @a.IsCorrect.ToString()
+        </div>
+
+
+       </div>
+
+    }
+    </div>
+        <div>
+            <a asp-action="Edit" asp-route-id="@Model.QuestionId">Edit</a> |
+            <a asp-action="Index">Back to List</a>
+        </div>
